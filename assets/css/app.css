@@ -1,1 +1,34 @@
 /* This file is for your main application css. */
+@import url('https://fonts.googleapis.com/css?family=Kanit:200,300,400,400i,500');
+
+body {
+  font-family: 'Kanit', sans-serif;
+}
+
+.presentation {
+  font-size: 3em;
+  background: url(/images/background.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.slide {
+  max-width: 1000px;
+  text-align: center;
+  margin: 0 auto;
+  font-weight: 300;
+}
+
+.slide h1 {
+  color: #05ffa1;
+  font-weight: 500;
+  letter-spacing: 10px;
+}
+
+.slide ul {
+  color: white;
+  text-align: left;
+  font-weight: 400;
+}
