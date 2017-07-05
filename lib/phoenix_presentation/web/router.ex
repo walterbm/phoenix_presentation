@@ -17,6 +17,8 @@ defmodule PhoenixPresentation.Web.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
+    get "/presentation", PresentationController, :index
+    get "/presentation/:slide", PresentationController, :index
   end
 
   # Other scopes may use custom stacks.
