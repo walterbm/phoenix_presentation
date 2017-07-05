@@ -8,7 +8,7 @@ function getSlide(location) {
   if (param && param[1]) {
     return parseInt(param[1])
   }
-  return 1
+  return 0
 }
 
 function getSlides(location) {

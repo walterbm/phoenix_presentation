@@ -1,0 +1,10 @@
+<div>
+  <div>
+    Hello!
+  </div>
+  <div >
+    <h2>Messages</h2>
+    <input type="text" id="newMessage" placeholder="Type and press enter...">
+    <ul id="messageList"></ul>
+  </div>
+</div>
