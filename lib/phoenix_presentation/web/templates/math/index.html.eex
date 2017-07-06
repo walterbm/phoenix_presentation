@@ -1,0 +1,7 @@
+<div>
+  <%= form_for @conn, math_path(@conn, :new), [as: :math], fn f -> %>
+    <%= text_input f, :number %>
+    <%= submit "Math!" %>
+  <% end %>
+  <%= @result %>
+</div>

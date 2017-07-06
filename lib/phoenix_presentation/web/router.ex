@@ -20,6 +20,8 @@ defmodule PhoenixPresentation.Web.Router do
     get "/chat", ChatController, :index
     get "/presentation", PresentationController, :index
     get "/presentation/:slide", PresentationController, :index
+    get "/math", MathController, :index
+    post "/math", MathController, :new
   end
 
   # Other scopes may use custom stacks.
