@@ -28,3 +28,4 @@ npm-debug.log
 
 # Slides
 /assets/static/slides.md
+.deliver/releases/

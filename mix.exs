@@ -16,7 +16,7 @@ defmodule PhoenixPresentation.Mixfile do
   # Type `mix help compile.app` for more information.
   def application do
     [mod: {PhoenixPresentation.Application, []},
-     extra_applications: [:logger, :runtime_tools]]
+     extra_applications: [:logger, :runtime_tools, :distillery, :edeliver]]
   end
 
   # Specifies which paths to compile per environment.
@@ -34,7 +34,9 @@ defmodule PhoenixPresentation.Mixfile do
       {:phoenix_live_reload, "~> 1.0", only: :dev},
       {:gettext, "~> 0.11"},
       {:cowboy, "~> 1.0"},
-      {:earmark, "~> 1.2"}
+      {:earmark, "~> 1.2"},
+      {:distillery, "~> 1.4"},
+      {:edeliver, "~> 1.4.2"}
     ]
   end
 end

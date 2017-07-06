@@ -1,0 +1,30 @@
+AUTO_VERSION=commit-count+git-revision+branch-unless-master
+
+USING_DISTILLERY="true"
+
+APP="phoenix_presentation"
+
+BUILD_HOST="173.199.123.26"
+BUILD_USER="root"
+BUILD_AT="/tmp/edeliver/$APP/builds"
+
+RELEASE_DIR="$BUILD_AT/rel/$APP"
+
+STAGING_HOSTS="104.131.46.111"
+STAGING_USER="root"
+DELIVER_TO="/opt"
+
+pre_erlang_clean_compile() {
+  status "Running phoenix.digest with default directories"
+  __sync_remote " # runs the commands on the build host
+    [ -f ~/.profile ] && source ~/.profile # load profile (optional)
+    set -e # fail if any command fails (recommended)
+    cd '$BUILD_AT' # enter the build directory on the build host (required)
+    # prepare something
+    mkdir -p priv/static # required by the phoenix.digest task
+    npm install
+    ./assets/node_modules/brunch/bin/brunch build --production
+    # run your custom task
+    APP='$APP' MIX_ENV='$TARGET_MIX_ENV' $MIX_CMD phoenix.digest # web/static -o priv/static $SILENCE
+  "
+}
