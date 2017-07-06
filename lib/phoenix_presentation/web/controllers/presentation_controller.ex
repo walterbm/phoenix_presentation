@@ -3,7 +3,7 @@ defmodule PhoenixPresentation.Web.PresentationController do
 
   alias PhoenixPresentation.ContentParser.Markdown
 
-  @slides "priv/static/slides.md"
+  @slides Path.join(:code.priv_dir(:phoenix_presentation), "static/slides.md")
 
   def index(conn, params) do
     number = Map.get(params, "slide", "0") |> String.to_integer
