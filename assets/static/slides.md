@@ -75,6 +75,11 @@ end
 - Express Cluster  ≈ 92000 req/s
 - Phoenix          ≈ 180000 req/s
 
+## Binary deployments
+
+- Generate a single binary to deploy
+- Encapsulates Erlang, BEAM, Elixir, and your app
+
 ## Disadvantages
 
 - Not as mature as Rails, Django, Laravel
