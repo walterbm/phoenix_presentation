@@ -10,7 +10,7 @@ defmodule PhoenixPresentation.ContentParser.Markdown do
 
   defp to_html(nil), do: nil
   defp to_html(markdown_text) when is_binary(markdown_text) do
-    Earmark.as_html!(markdown_text)
+    Earmark.as_html!(markdown_text, %Earmark.Options{code_class_prefix: "lang- language-"})
   end
 
   defp read_file(path) do

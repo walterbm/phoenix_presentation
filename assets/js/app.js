@@ -11,8 +11,10 @@
 //
 // If you no longer want to use a dependency, remember
 // to also remove its path from "config.paths.watched".
-import "phoenix_html"
-import Turbolinks from 'turbolinks';
+import 'phoenix_html'
+import Turbolinks from 'turbolinks'
+import 'prismjs'
+import 'prismjs/components/prism-elixir.min.js'
 
 // Import local files
 //

@@ -5,6 +5,21 @@ body {
   font-family: 'Kanit', sans-serif;
 }
 
+.page {
+  font-size: 3em;
+  background: url(/images/vaporwave.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  padding: 80px 80px;
+}
+
+.link {
+  color: #931cf9;
+  text-decoration: none;
+}
+
 .presentation {
   font-size: 3em;
   background: url(/images/background.jpg) no-repeat center center fixed;
@@ -25,10 +40,25 @@ body {
   color: #05ffa1;
   font-weight: 500;
   letter-spacing: 10px;
+  margin: 20px 0 35px;
+  line-height: 1;
 }
 
 .slide ul {
-  color: white;
+  color: #fdf6e3;
   text-align: left;
   font-weight: 400;
+  margin-top: 20px;
+}
+
+.slide .language-elixir {
+  font-size: 25px;
+}
+
+.slide code.inline {
+  background-color: #fdf6e3;
+  padding: 10px;
+  margin: 10px 0;
+  overflow: auto;
+  border-radius: 0.3em;
 }

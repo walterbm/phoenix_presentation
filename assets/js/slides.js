@@ -40,7 +40,7 @@ function start() {
   const keyStream = Rx.Observable.fromEvent(doc, 'keyup')
     .pluck('keyCode')
     .filter(code => code === 37 || code === 39 )
-    .debounce(50)
+    .debounce(150)
     .take(1)
 
   keyStream.subscribe(navigateToSlide);
