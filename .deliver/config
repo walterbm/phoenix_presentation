@@ -19,11 +19,11 @@ pre_erlang_clean_compile() {
   __sync_remote " # runs the commands on the build host
     [ -f ~/.profile ] && source ~/.profile # load profile (optional)
     set -e # fail if any command fails (recommended)
-    cd '$BUILD_AT' # enter the build directory on the build host (required)
-    # prepare something
     mkdir -p priv/static # required by the phoenix.digest task
+    cd '$BUILD_AT/assets' # enter the build directory on the build host (required)
+    # prepare something
     npm install
-    ./assets/node_modules/brunch/bin/brunch build --production
+    ./node_modules/brunch/bin/brunch build --production
     # run your custom task
     APP='$APP' MIX_ENV='$TARGET_MIX_ENV' $MIX_CMD phoenix.digest # web/static -o priv/static $SILENCE
   "
