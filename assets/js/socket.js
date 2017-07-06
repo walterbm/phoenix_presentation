@@ -59,7 +59,9 @@ channel.join()
   .receive("ok", resp => { console.log("Joined successfully", resp) })
   .receive("error", resp => { console.log("Unable to join", resp) })
 
-let messageInput = document.getElementById("newMessage")
+let messageInput = document.getElementById("input")
+let messageSend = document.getElementById("send")
+
 if (messageInput) {
   messageInput.addEventListener("keypress", (e) => {
     if (e.keyCode == 13 && messageInput.value != "") {
@@ -67,20 +69,28 @@ if (messageInput) {
       messageInput.value = ""
     }
   })
+  messageSend.addEventListener("click", (e) => {
+    if (messageInput.value != "") {
+      channel.push("message:new", messageInput.value)
+      messageInput.value = ""
+    }
+  })
 }
 
-let messageList = document.getElementById("messageList")
-if (messageList) {
-  let renderMessage = (message) => {
-    let messageElement = document.createElement("li")
-    messageElement.innerHTML = `
-      <b>${message.user}</b>
-      <i>${message.timestamp}</i>
-      <p>${message.body}</p>
-    `
-    messageList.appendChild(messageElement)
-    messageList.scrollTop = messageList.scrollHeight;
-  }
+let formatTimestamp = (timestamp) => {
+  let date = new Date(timestamp)
+  return date.toLocaleTimeString()
+}
+
+let messageList = document.getElementById("messages")
+let renderMessage = (message) => {
+  let messageElement = document.createElement("li")
+  messageElement.innerHTML = `
+    <i>${formatTimestamp(message.timestamp)}</i>
+    <span><b>${message.body}</b></span>
+  `
+  messageList.insertBefore(messageElement, messageList.firstChild );
+  messageList.scrollTop = messageList.scrollHeight;
 }
 
 
