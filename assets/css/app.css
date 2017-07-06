@@ -5,6 +5,24 @@ body {
   font-family: 'Kanit', sans-serif;
 }
 
+.online-tracker {
+  position: fixed;
+  top: 20px;
+  right: 40px;
+  background: #05ffa1;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#online {
+  color: black;
+  font-size: 30px;
+}
+
 .page {
   font-size: 3em;
   background: url(/images/vaporwave.jpg) no-repeat center center fixed;

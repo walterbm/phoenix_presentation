@@ -1,12 +1,18 @@
 defmodule PhoenixPresentation.Web.ChatChannel do
   use PhoenixPresentation.Web, :channel
+  alias PhoenixPresentation.Web.Presence
 
-  def join("chat:lobby", payload, socket) do
-    if authorized?(payload) do
-      {:ok, socket}
-    else
-      {:error, %{reason: "unauthorized"}}
-    end
+  def join("chat:lobby", _payload, socket) do
+    send self(), :after_join
+    {:ok, socket}
+  end
+
+  def handle_info(:after_join, socket) do
+    Presence.track(socket, socket.assigns.user, %{
+      online_at: :os.system_time(:milli_seconds)
+    })
+    push socket, "presence_state", Presence.list(socket)
+    {:noreply, socket}
   end
 
   # Channels can be used in a request/response fashion
@@ -28,10 +34,5 @@ defmodule PhoenixPresentation.Web.ChatChannel do
       timestamp: :os.system_time(:milli_seconds)
     }
     {:noreply, socket}
-  end
-
-  # Add authorization logic here as required.
-  defp authorized?(_payload) do
-    true
   end
 end

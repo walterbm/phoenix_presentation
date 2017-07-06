@@ -3,9 +3,18 @@
 
 // To use Phoenix channels, the first step is to import Socket
 // and connect at the socket path in "lib/web/endpoint.ex":
-import {Socket} from "phoenix"
+import { Socket, Presence } from 'phoenix'
 
-let socket = new Socket("/socket", {params: {token: window.userToken}})
+let id;
+
+if (localStorage.getItem('chat_id')) {
+  id = localStorage.getItem('chat_id')
+} else {
+  id = Math.floor(Math.random() * 2000);
+  localStorage.setItem("chat_id", id);
+}
+
+let socket = new Socket("/socket", {params: {user:  id }})
 
 // When you connect, you'll often need to authenticate the client.
 // For example, imagine you have an authentication plug, `MyAuth`,
@@ -53,6 +62,8 @@ let socket = new Socket("/socket", {params: {token: window.userToken}})
 
 socket.connect()
 
+let presences = {}
+
 // Now that you are connected, you can join channels with a topic:
 let channel = socket.channel("chat:lobby", {})
 channel.join()
@@ -95,5 +106,16 @@ let renderMessage = (message) => {
 
 
 channel.on("message:new", message => renderMessage(message))
+
+channel.on("presence_state", state => {
+  presences = Presence.syncState(presences, state)
+  console.log(Object.keys(presences).length)
+  document.getElementById('online').innerHTML = Object.keys(presences).length
+})
+
+channel.on("presence_diff", diff => {
+  presences = Presence.syncDiff(presences, diff)
+  document.getElementById('online').innerHTML = Object.keys(presences).length
+})
 
 export default socket

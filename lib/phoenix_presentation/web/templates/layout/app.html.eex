@@ -12,8 +12,10 @@
   </head>
 
   <body class="<%= view_name(@conn) %>">
+    <div class="online-tracker" data-turbolinks-permanent>
+      <span id="online"></span>
+    </div>
     <div class="container">
-
       <main role="main">
         <%= render @view_module, @view_template, assigns %>
       </main>

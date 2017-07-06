@@ -10,6 +10,7 @@ defmodule PhoenixPresentation.Application do
     children = [
       # Start the endpoint when the application starts
       supervisor(PhoenixPresentation.Web.Endpoint, []),
+      supervisor(PhoenixPresentation.Web.Presence, []),
       # Start your own worker by calling: PhoenixPresentation.Worker.start_link(arg1, arg2, arg3)
       # worker(PhoenixPresentation.Worker, [arg1, arg2, arg3]),
     ]
