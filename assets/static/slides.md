@@ -79,11 +79,12 @@ end
 
 - Not as mature as Rails, Django, Laravel
 - No tech giant to follow (only B/R)
-- It is now appropriate to point and say "See, this is why we should stick with {framework}"
+- Real overhead to learning depths of functional programing
 
 ## Demos
 
 - Chat is easy
+- Server side rendeing is incredibly fast
 - This whole thing is a demo
 
 ## Chat
@@ -120,27 +121,42 @@ def handle_in("message:new", message, socket) do
 end
 ```
 
+## Chat
+
+`chat_channel.ex`
+
+```elixir
+def handle_info(:after_join, socket) do
+  Presence.track(socket, socket.assigns.user, %{
+    online_at: :os.system_time(:milli_seconds)
+  })
+  push socket, "presence_state", Presence.list(socket)
+  {:noreply, socket}
+end
+```
+
 ## Real World Problems
 
-- Slow requests?
+- *Slow requests?*
 - Could use an external queue
 - Or use Async/Await, elixir processes, and VM scheduling
 
 ## Real World Problems
 
-- Need chat and realtime functionality?
+- *Need chat and realtime functionality?*
 - Phoenix Channels make it incredibly easy
+- Use tested abstractions over OTP patterns and Erlang pub-sub
 - Proven to handle 10k concurrent across machines without Redis
 
 ## Real World Problems
 
-- Traffic spikes?
+- *Traffic spikes?*
 - Each request is an isolated process
 - Ask Kelvin about his load tests
 
 ## Real World Problems
 
-- Need some NoSQL for some quick cacheing?
+- *Need some NoSQL for some quick cacheing?*
 - Erlang BEAM comes with ETS and Mnesia
 
 ## End

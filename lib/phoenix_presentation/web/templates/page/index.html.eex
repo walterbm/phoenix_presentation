@@ -7,6 +7,9 @@
       <a class="link" href="<%= chat_path(@conn, :index) %>" data-turbolinks="false" >Chat</a>
     </li>
     <li>
+      <a class="link" href="https://github.com/walterbm/phoenix_presentation" target="_blank">This codebase</a>
+    </li>
+    <li>
       <a class="link" href="http://www.phoenixframework.org/" target="_blank">Phoenix</a>
     </li>
   </ul>
