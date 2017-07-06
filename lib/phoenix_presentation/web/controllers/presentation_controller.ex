@@ -6,7 +6,7 @@ defmodule PhoenixPresentation.Web.PresentationController do
   @slides "static/slides.md"
 
   def index(conn, params) do
-    slide_path = Path.join(:code.priv_dir(:phoenix_presentation, @slides))
+    slide_path = Path.join(Application.app_dir(:phoenix_presentation, "priv"), @slides)
     number = Map.get(params, "slide", "0") |> String.to_integer
     slide = Markdown.convert_slide(slide_path, number)
     render conn, "slide.html", slide: slide
