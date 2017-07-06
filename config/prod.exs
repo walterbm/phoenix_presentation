@@ -59,6 +59,5 @@ config :logger, level: :info
 #     config :phoenix_presentation, PhoenixPresentation.Web.Endpoint, server: true
 #
 
-# Finally import the config/prod.secret.exs
-# which should be versioned separately.
-import_config "prod.secret.exs"
+config :phoenix_presentation, PhoenixPresentation.Web.Endpoint,
+  secret_key_base: "PXouv/A9K4w+iw/nXGzgugZ+wcRwKasC38hwmHRGoGGEtEalDI69a7AWVAMZJHJu"
