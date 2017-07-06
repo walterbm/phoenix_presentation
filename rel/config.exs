@@ -31,6 +31,7 @@ environment :prod do
   set include_erts: true
   set include_src: false
   set cookie: :"a*<[1[*YrEVJ2)fEg5dzSWp]51~CWf|dW@Eob$ii7V%;KC7imD3,d%dr,_[(Td@^"
+  set output_dir: "rel/phoenix_presentation"
 end
 
 # You may define one or more releases in this file.
@@ -44,4 +45,3 @@ release :phoenix_presentation do
     :runtime_tools
   ]
 end
-

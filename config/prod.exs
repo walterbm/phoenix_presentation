@@ -15,7 +15,7 @@ use Mix.Config
 # which you typically run after static files are built.
 config :phoenix_presentation, PhoenixPresentation.Web.Endpoint,
   on_init: {PhoenixPresentation.Web.Endpoint, :load_from_system_env, []},
-  url: [host: "example.com", port: 80],
+  url: [host: "104.131.46.111", port: 8888],
   cache_static_manifest: "priv/static/cache_manifest.json",
   server: true,
   root: ".",

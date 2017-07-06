@@ -6,7 +6,7 @@ APP="phoenix_presentation"
 
 BUILD_HOST="104.131.16.3"
 BUILD_USER="builder"
-BUILD_AT="/tmp/edeliver/$APP/builds"
+BUILD_AT="/tmp/edeliver/phoenix_presentation/builds"
 
 RELEASE_DIR="$BUILD_AT/rel/$APP"
 
@@ -25,7 +25,7 @@ pre_erlang_clean_compile() {
     npm install
     ./node_modules/brunch/bin/brunch build --production
     # run your custom task
-    cd '$BUILD_AT'
+    cd '..'
     APP='$APP' MIX_ENV='$TARGET_MIX_ENV' $MIX_CMD phx.digest # web/static -o priv/static $SILENCE
   "
 }
